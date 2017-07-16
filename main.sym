@@ -73,8 +73,8 @@
 
 ROM Allocation:
 0004  interrupcao
-000D  MAIN
-000D  @cinit
+0013  MAIN
+0013  @cinit
 
 
 User Memory space: 
