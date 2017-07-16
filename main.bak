@@ -53,6 +53,7 @@ int count;
 #int_global
 void interrupcao(){
 restart_wdt();
+disable_interrupts(global);
 #asm
 movwf w_temp
 swapf status,w
@@ -63,6 +64,7 @@ movwf status_temp
 //***************************************************************************
 //                          FIM DA INTERRUPCAO
 //***************************************************************************
+enable_interrupts(global);
 #asm
 swapf status_temp,w
 movwf status

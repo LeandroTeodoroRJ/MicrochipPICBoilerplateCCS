@@ -12,14 +12,14 @@ Stack used: 1 worst case (out of 8 total available)
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  169    16  12  main.c
+  170    16  12  main.c
   217     0   0  ..\..\..\Program Files (x86)\PICC\devices\16F628.h
   409   121  88  ..\..\..\Program Files (x86)\PICC\drivers\string.h
    28     0   0  ..\..\..\Program Files (x86)\PICC\drivers\stddef.h
    28     0   0  ..\..\..\Program Files (x86)\PICC\drivers\ctype.h
    82     0   0  ..\INCLUDES\16f628_registradores.h
 ----- -----
-  933   137 Total
+  934   137 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------

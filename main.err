@@ -1,4 +1,4 @@
->>> Warning 208 "main.c" Line 86(1,12): Function not void and does not return a value  trata_tecla
->>> Warning 203 "main.c" Line 113(1,1): Condition always TRUE
+>>> Warning 208 "main.c" Line 87(1,12): Function not void and does not return a value  trata_tecla
+>>> Warning 203 "main.c" Line 114(1,1): Condition always TRUE
       Memory usage:   ROM=3%      RAM=4% - 4%
       0 Errors,  2 Warnings.
