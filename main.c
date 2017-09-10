@@ -95,7 +95,7 @@ trata_tecla(){
 
 void main(){
 //********************** CONFIGURAÇÕES INICIAIS *****************************
-      setup_timer_0(rtcc_internal | rtcc_div_2); //clock interno, prescaler 1:2
+      setup_timer_0(rtcc_internal); //clock interno
       setup_timer_1(t1_internal|t1_div_by_8); 
       setup_wdt(wdt_288ms);
       disable_interrupts(global);
