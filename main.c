@@ -16,7 +16,7 @@
 #use fast_io(b)                  //o compilador nao configura o tris
 
 #use delay(clock=4000000)        //clock usual
-#fuses XT,WDT,NOLVP,PUT,PROTECT
+#fuses HS,NOWDT,NOLVP,PUT,NOPROTECT
 
 //#rom 0x2100={0b00010010,0x00}    //programa os primeiros dois endereços da eeprom
                                  
@@ -95,7 +95,7 @@ trata_tecla(){
 
 void main(){
 //********************** CONFIGURAÇÕES INICIAIS *****************************
-      setup_timer_0(rtcc_internal); //clock interno, prescaler 1:2
+      setup_timer_0(rtcc_internal | rtcc_div_2); //clock interno, prescaler 1:2
       setup_timer_1(t1_internal|t1_div_by_8); 
       setup_wdt(wdt_288ms);
       disable_interrupts(global);
