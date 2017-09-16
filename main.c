@@ -99,7 +99,7 @@ void main(){
       setup_timer_1(t1_internal|t1_div_by_8); 
       setup_wdt(wdt_288ms);
       disable_interrupts(global);
-      bit_set(option_reg,7);    //sem pull-up
+      port_b_pullups(false);    //sem pull-up
 
 //    Configuração do tris
 //    Bit porta: 76543210
