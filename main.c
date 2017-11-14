@@ -3,9 +3,9 @@
 //****************************************************************************
 //Compilador CCS PCWH Ver 4.104
 
-#include <16F628.h>              //include do 16F628
+#include <16F877.h>              //include do 16F628
 #include <string.h>
-#include <16f628_registradores.h>//MAPEAMENTO DE MEÓRIA DOS REGISTRADORES
+#include <16f8x_registradores.h>//MAPEAMENTO DE MEÓRIA DOS REGISTRADORES
                                                     
 
 //****************************************************************************
@@ -15,7 +15,7 @@
 #use fast_io(a)                  //modo de entrada e saida de dados que
 #use fast_io(b)                  //o compilador nao configura o tris
 
-#use delay(clock=4000000)        //clock usual
+#use delay(clock=20000000)        //clock usual
 #fuses HS,NOWDT,NOLVP,PUT,NOPROTECT
 
 //#rom 0x2100={0b00010010,0x00}    //programa os primeiros dois endereços da eeprom
@@ -38,7 +38,7 @@
 
 int   w_temp;
 int   status_temp;
-int count;
+int   count;
 
 
 //***************************************************************************
@@ -52,33 +52,18 @@ int count;
 //                       Rotinas da interrupcao
 //****************************************************************************
 //#inline                     //descomentar se for usar o in_line
+void trata_serial(){
 
-
+}
 
 //****************************************************************************
 //                           INTERRUPÇÕES
 //****************************************************************************
-#int_global
+#int_rda
 void interrupcao(){
-restart_wdt();
-disable_interrupts(global);
-#asm
-movwf w_temp
-swapf status,w
-movwf status_temp
-#endasm
-
-
-//***************************************************************************
-//                          FIM DA INTERRUPCAO
-//***************************************************************************
-enable_interrupts(global);
-#asm
-swapf status_temp,w
-movwf status
-swapf w_temp,f
-swapf w_temp,w
-#endasm
+   disable_interrupts(int_rda);
+   trata_serial();
+   enable_interrupts(int_rda);
 }
 
 //****************************************************************************
@@ -98,13 +83,20 @@ void main(){
       setup_timer_0(rtcc_internal); //clock interno
       setup_timer_1(t1_internal|t1_div_by_8); 
       setup_wdt(wdt_288ms);
-      disable_interrupts(global);
       port_b_pullups(false);    //sem pull-up
 
 //    Configuração do tris
 //    Bit porta: 76543210
-      tris_a = 0b00011000;
-      tris_b = 0b00011111;
+      tris_a = 0b00000000;
+      tris_b = 0b00000000;
+      tris_c = 0b00000000;
+      tris_d = 0b00000000;
+      tris_e = 0b00000000;
+      
+      enable_interrupts(global);
+      enable_interrupts(int_rda);
+      
+      
 //******************** INICIALIZAÇÃO DE VARIÁVEIS ***************************
       count = 0;
       
